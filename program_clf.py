@@ -2,13 +2,13 @@
 #Writer:  Koyo Miyamura
 #Summary: Machine learning script using performance counter (CSV file).
 #Input:   Performance counter from each programs and labels
-#         (Input csv is got using program at https://github.com/koyo-miyamura/perf_analyze_rewrite)
+#         (Input csv is got by using program at https://github.com/koyo-miyamura/perf_analyze_rewrite)
 #Output:  Accuracy rate of all input
 #         Classification_report
 #         Confusion matrix
-#         Accuracy after moving average
 #         Plot of decision function
 #Remarks: I labeled CHANGE in the place which I thought you want to change. (you can search the word Chan to find the variable places)
+#         I recomend you to read the document http://scikit-learn.org/stable/ to use the script
 ###
 
 from time import time
@@ -224,19 +224,6 @@ for i in range(len(list)):
     plt.ylabel('Distance from hyperplane')
     plt.legend()
     plt.show()
-
-"""
-# Moving Average accuracy 
-threshold = 0
-#plt.hlines(y=threshold, xmin=0, xmax=len(func)*0.1, colors='r', linewidths=2,label="threshold")
-result = []
-for i in range(len(decision_avg)):
-    if decision_avg[i]>=threshold:
-        result.append(1)
-    else:
-        result.append(0)
-print("moving_averaged accuracy = %f" % (accuracy_score(lbm[: -1],np.array(result))))
-"""
 
 # Plot all decision functions
 x = np.array([(i+1)*0.1 for i in range(n_samples_test)])
